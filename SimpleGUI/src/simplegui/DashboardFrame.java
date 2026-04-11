@@ -72,9 +72,9 @@ public class DashboardFrame extends javax.swing.JFrame {
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(359, Short.MAX_VALUE)
+                .addContainerGap(349, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(150, 150, 150)
+                .addGap(160, 160, 160)
                 .addComponent(btnSignOut)
                 .addGap(34, 34, 34))
         );
@@ -83,12 +83,12 @@ public class DashboardFrame extends javax.swing.JFrame {
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel1))
-                    .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(btnSignOut)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(btnSignOut))
+                    .addGroup(HeaderPanelLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         LeftPanel.setBackground(new java.awt.Color(0, 255, 102));

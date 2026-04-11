@@ -107,6 +107,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         cmbSort.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
         SearchPanel.setLayout(SearchPanelLayout);
@@ -186,21 +187,25 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         CRUDPanel.setBackground(new java.awt.Color(0, 153, 153));
 
-        lblManage.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblManage.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblManage.setForeground(new java.awt.Color(0, 0, 0));
-        lblManage.setText("Manage Function");
+        lblManage.setText("Manage Function:");
 
         btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnCreate.setText("Create");
+        btnCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnRead.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnRead.setText("Read");
+        btnRead.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout CRUDPanelLayout = new javax.swing.GroupLayout(CRUDPanel);
         CRUDPanel.setLayout(CRUDPanelLayout);
@@ -213,13 +218,13 @@ public class DashboardFrame extends javax.swing.JFrame {
                     .addComponent(btnUpdate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRead, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete))
-                .addGap(44, 44, 44))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CRUDPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRead, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(52, 52, 52))
+            .addGroup(CRUDPanelLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
                 .addComponent(lblManage)
-                .addGap(100, 100, 100))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CRUDPanelLayout.setVerticalGroup(
             CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,11 +235,11 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addGroup(CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnRead))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout RightPanelLayout = new javax.swing.GroupLayout(RightPanel);

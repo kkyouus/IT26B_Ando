@@ -29,7 +29,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         HeaderPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnSignOut = new javax.swing.JButton();
         LeftPanel = new javax.swing.JPanel();
         SearchPanel = new javax.swing.JPanel();
         lblSearch = new javax.swing.JLabel();
@@ -42,10 +42,10 @@ public class DashboardFrame extends javax.swing.JFrame {
         ImagePanel = new javax.swing.JPanel();
         CRUDPanel = new javax.swing.JPanel();
         lblManage = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        btnRead = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         FooterPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,11 +61,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("FOOTBALL MANAGER");
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 0, 0));
-        jButton5.setText("Sign Out");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSignOut.setBackground(new java.awt.Color(255, 255, 255));
+        btnSignOut.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSignOut.setForeground(new java.awt.Color(255, 0, 0));
+        btnSignOut.setText("Sign Out");
+        btnSignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
@@ -75,7 +75,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addContainerGap(359, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(150, 150, 150)
-                .addComponent(jButton5)
+                .addComponent(btnSignOut)
                 .addGap(34, 34, 34))
         );
         HeaderPanelLayout.setVerticalGroup(
@@ -87,7 +87,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jButton5)))
+                        .addComponent(btnSignOut)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -190,17 +190,17 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblManage.setForeground(new java.awt.Color(0, 0, 0));
         lblManage.setText("Manage Function");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("Create");
+        btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCreate.setText("Create");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setText("Read");
+        btnRead.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnRead.setText("Read");
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton3.setText("Update");
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnUpdate.setText("Update");
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton4.setText("Delete");
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnDelete.setText("Delete");
 
         javax.swing.GroupLayout CRUDPanelLayout = new javax.swing.GroupLayout(CRUDPanel);
         CRUDPanel.setLayout(CRUDPanelLayout);
@@ -209,12 +209,12 @@ public class DashboardFrame extends javax.swing.JFrame {
             .addGroup(CRUDPanelLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(btnRead, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete))
                 .addGap(44, 44, 44))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CRUDPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -228,12 +228,12 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addComponent(lblManage)
                 .addGap(26, 26, 26)
                 .addGroup(CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnCreate)
+                    .addComponent(btnRead))
                 .addGap(27, 27, 27)
                 .addGroup(CRUDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -354,12 +354,12 @@ public class DashboardFrame extends javax.swing.JFrame {
     private javax.swing.JPanel RightPanel;
     private javax.swing.JPanel SearchPanel;
     private javax.swing.JPanel TablePanel;
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnRead;
+    private javax.swing.JButton btnSignOut;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbSort;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblManage;

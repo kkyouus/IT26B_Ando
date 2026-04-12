@@ -430,8 +430,6 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        
-        btnCreate.addActionListener(e -> {
 
     String name = javax.swing.JOptionPane.showInputDialog(this, "Enter Player Name:");
     String age = javax.swing.JOptionPane.showInputDialog(this, "Enter Age:");
@@ -443,13 +441,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         players.add(new String[]{name, age, position, value, role});
         refreshTable();
     }
-});
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
         // TODO add your handling code here:
         
-        btnRead.addActionListener(e -> {
     int row = tblPlayers.getSelectedRow();
 
     if (row == -1) {
@@ -466,12 +462,10 @@ public class DashboardFrame extends javax.swing.JFrame {
         "\nValue: " + p[3] +
         "\nRole: " + p[4]
     );
-});
     }//GEN-LAST:event_btnReadActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        btnUpdate.addActionListener(e -> {
     int row = tblPlayers.getSelectedRow();
 
     if (row == -1) {
@@ -489,12 +483,10 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     players.set(row, new String[]{name, age, position, value, role});
     refreshTable();
-});
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        btnDelete.addActionListener(e -> {
     int row = tblPlayers.getSelectedRow();
 
     if (row == -1) {
@@ -504,12 +496,10 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     players.remove(row);
     refreshTable();
-});
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void cmbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortActionPerformed
         // TODO add your handling code here:
-        cmbSort.addActionListener(e -> {
     String selected = cmbSort.getSelectedItem().toString();
 
     if (selected.equals("Sort by Name")) {
@@ -519,7 +509,6 @@ public class DashboardFrame extends javax.swing.JFrame {
     }
 
     refreshTable();
-});
     }//GEN-LAST:event_cmbSortActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
@@ -533,8 +522,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         // TODO add your handling code here:
-        btnSignOut.addActionListener(e -> {
-
+        
     int confirm = javax.swing.JOptionPane.showConfirmDialog(
         this,
         "Are you sure you want to sign out?",
@@ -547,7 +535,6 @@ public class DashboardFrame extends javax.swing.JFrame {
         this.dispose();
     }
 
-});
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     /**

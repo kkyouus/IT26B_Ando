@@ -6,59 +6,6 @@ import javax.swing.JOptionPane;
 
 public class LoginFrame extends javax.swing.JFrame {
     
-    // ================= CAESAR CIPHER =================
-private String encrypt(String text, int shift) {
-    StringBuilder result = new StringBuilder();
-
-    for (char c : text.toCharArray()) {
-        result.append((char) (c + shift));
-    }
-
-    return result.toString();
-}
-
-private String decrypt(String text, int shift) {
-    StringBuilder result = new StringBuilder();
-
-    for (char c : text.toCharArray()) {
-        result.append((char) (c - shift));
-    }
-
-    return result.toString();
-}
-
-private boolean checkLogin(String id, String password) {
-    try {
-        File file = new File("accounts.txt");
-        if (!file.exists()) return false;
-
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line;
-
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split("\\|");
-
-            if (parts.length == 3) {
-                String fileID = parts[0];
-                String fileUser = parts[1];
-                String filePass = decrypt(parts[2], 3);
-
-                if (fileID.equals(id) && filePass.equals(password)) {
-                    br.close();
-                    return true;
-                }
-            }
-        }
-
-        br.close();
-
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-
-    return false;
-}
-
     /**
      * Creates new form LoginFrame
      */
@@ -257,27 +204,22 @@ private boolean checkLogin(String id, String password) {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         
-        btnCreateAccount.addActionListener(e -> {
-    new CreateAccountFrame().setVisible(true);
-    this.dispose();
-});
-
-    String id = txtManagerID.getText();
+        String id = txtManagerID.getText();
     String pass = new String(txtPassword.getPassword());
 
     if (id.isEmpty() || pass.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please fill all fields!");
+        javax.swing.JOptionPane.showMessageDialog(this, "Please fill all fields!");
         return;
     }
 
-    if (checkLogin(id, pass)) {
-        JOptionPane.showMessageDialog(this, "Login Successful!");
+    if (AuthManager.login(id, pass)) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Login Successful!");
 
         new DashboardFrame().setVisible(true);
         this.dispose();
 
     } else {
-        JOptionPane.showMessageDialog(this, "Invalid ID or Password!");
+        javax.swing.JOptionPane.showMessageDialog(this, "Invalid ID or Password!");
     }
 
     }//GEN-LAST:event_btnLoginActionPerformed

@@ -1,12 +1,10 @@
-
 package simplegui;
 
 import java.io.*;
-import java.util.*;
 
 public class AuthManager {
     
-    private static final String FILE_PATH = "users.txt";
+    private static final String FILE_PATH = "accounts.txt";
 
     // ================================
     // CAESAR CIPHER (ENCRYPT)
@@ -15,7 +13,7 @@ public class AuthManager {
         StringBuilder result = new StringBuilder();
 
         for (char c : text.toCharArray()) {
-            result.append((char) (c + 3)); // shift +3
+            result.append((char) (c + 3));
         }
 
         return result.toString();
@@ -28,29 +26,44 @@ public class AuthManager {
         StringBuilder result = new StringBuilder();
 
         for (char c : text.toCharArray()) {
-            result.append((char) (c - 3)); // shift -3
+            result.append((char) (c - 3));
         }
 
         return result.toString();
     }
 
     // ================================
-    // SAVE ACCOUNT
+    // REGISTER ACCOUNT
     // ================================
     public static boolean register(String id, String username, String password) {
+
+        // ❗ check empty
+        if (id.isEmpty() || username.isEmpty() || password.isEmpty()) {
+            return false;
+        }
+
+        // ❗ check duplicate ID
+        if (isIDExist(id)) {
+            return false;
+        }
+
         try (FileWriter fw = new FileWriter(FILE_PATH, true)) {
             String encryptedPass = encrypt(password);
             fw.write(id + "|" + username + "|" + encryptedPass + "\n");
             return true;
+
         } catch (Exception e) {
-            return false;
+            e.printStackTrace();
         }
+
+        return false;
     }
 
     // ================================
     // LOGIN CHECK
     // ================================
     public static boolean login(String id, String password) {
+
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
 
@@ -73,5 +86,26 @@ public class AuthManager {
 
         return false;
     }
-    
+
+    // ================================
+    // CHECK IF ID EXISTS
+    // ================================
+    private static boolean isIDExist(String id) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split("\\|");
+
+                if (data[0].equals(id)) {
+                    return true;
+                }
+            }
+
+        } catch (Exception e) {
+            // ignore if file not exist yet
+        }
+
+        return false;
+    }
 }

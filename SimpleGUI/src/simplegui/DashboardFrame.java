@@ -1,8 +1,21 @@
 
 package simplegui;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class DashboardFrame extends javax.swing.JFrame {
+    
+    private ArrayList<String[]> players = new ArrayList<>();
+    
+    private void refreshTable() {
+    DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
+    model.setRowCount(0); // clear table
+
+    for (String[] p : players) {
+        model.addRow(p);
+    }
+}
 
     /**
      * Creates new form DashboardFrame
@@ -216,6 +229,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnCreate.setText("Create");
         btnCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         btnRead.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnRead.setText("Read");
@@ -340,6 +358,24 @@ public class DashboardFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+        
+        btnCreate.addActionListener(e -> {
+
+    String name = javax.swing.JOptionPane.showInputDialog(this, "Enter Player Name:");
+    String age = javax.swing.JOptionPane.showInputDialog(this, "Enter Age:");
+    String position = javax.swing.JOptionPane.showInputDialog(this, "Enter Position:");
+    String value = javax.swing.JOptionPane.showInputDialog(this, "Enter Market Value:");
+    String role = javax.swing.JOptionPane.showInputDialog(this, "Enter Best Role:");
+
+    if (name != null && age != null) {
+        players.add(new String[]{name, age, position, value, role});
+        refreshTable();
+    }
+});
+    }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
      * @param args the command line arguments

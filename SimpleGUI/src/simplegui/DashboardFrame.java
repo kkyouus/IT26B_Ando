@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package simplegui;
 
-/**
- *
- * @author Dell
- */
+
 public class DashboardFrame extends javax.swing.JFrame {
 
     /**
@@ -28,9 +22,9 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         HeaderPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblFootballManagerHeader = new javax.swing.JLabel();
         btnSignOut = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         LeftPanel = new javax.swing.JPanel();
         SearchPanel = new javax.swing.JPanel();
         lblSearch = new javax.swing.JLabel();
@@ -41,7 +35,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         tblPlayers = new javax.swing.JScrollPane();
         RightPanel = new javax.swing.JPanel();
         ImagePanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblPictureFootballField = new javax.swing.JLabel();
         CRUDPanel = new javax.swing.JPanel();
         lblManage = new javax.swing.JLabel();
         btnCreate = new javax.swing.JButton();
@@ -58,9 +52,12 @@ public class DashboardFrame extends javax.swing.JFrame {
         HeaderPanel.setBackground(new java.awt.Color(0, 153, 255));
         HeaderPanel.setPreferredSize(new java.awt.Dimension(1000, 100));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("FOOTBALL MANAGER");
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo (1).png"))); // NOI18N
+        lblLogo.setText("jLabel3");
+
+        lblFootballManagerHeader.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblFootballManagerHeader.setForeground(new java.awt.Color(255, 255, 255));
+        lblFootballManagerHeader.setText("FOOTBALL MANAGER");
 
         btnSignOut.setBackground(new java.awt.Color(255, 255, 255));
         btnSignOut.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -68,18 +65,15 @@ public class DashboardFrame extends javax.swing.JFrame {
         btnSignOut.setText("Sign Out");
         btnSignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo (1).png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblFootballManagerHeader)
                 .addGap(177, 177, 177)
                 .addComponent(btnSignOut)
                 .addGap(39, 39, 39))
@@ -93,10 +87,10 @@ public class DashboardFrame extends javax.swing.JFrame {
                         .addComponent(btnSignOut))
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jLabel1))
+                        .addComponent(lblFootballManagerHeader))
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)))
+                        .addComponent(lblLogo)))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -183,8 +177,8 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         ImagePanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/formation (1).png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        lblPictureFootballField.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/formation (1).png"))); // NOI18N
+        lblPictureFootballField.setText("jLabel2");
 
         javax.swing.GroupLayout ImagePanelLayout = new javax.swing.GroupLayout(ImagePanel);
         ImagePanel.setLayout(ImagePanelLayout);
@@ -192,14 +186,14 @@ public class DashboardFrame extends javax.swing.JFrame {
             ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ImagePanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPictureFootballField, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ImagePanelLayout.setVerticalGroup(
             ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ImagePanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel2)
+                .addComponent(lblPictureFootballField)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -388,11 +382,11 @@ public class DashboardFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSignOut;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbSort;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblFootballManagerHeader;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblManage;
+    private javax.swing.JLabel lblPictureFootballField;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblSort;
     private javax.swing.JScrollPane tblPlayers;

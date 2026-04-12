@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package simplegui;
 
-/**
- *
- * @author Dell
- */
+
 public class LoginFrame extends javax.swing.JFrame {
 
     /**
@@ -28,16 +22,17 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         LeftPanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblBackgroundWallpaper = new javax.swing.JLabel();
         RightPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblLoginHeader = new javax.swing.JLabel();
         lblManagerID = new javax.swing.JLabel();
         txtManagerID = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         checkboxShowPassword = new javax.swing.JCheckBox();
         btnLogin = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblIDontHaveAnAccount = new javax.swing.JLabel();
         btnCreateAccount = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,19 +46,19 @@ public class LoginFrame extends javax.swing.JFrame {
         LeftPanel.setBackground(new java.awt.Color(0, 153, 255));
         LeftPanel.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo2 (1).png"))); // NOI18N
-        jLabel3.setText("jLabel3");
+        lblBackgroundWallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo2 (1).png"))); // NOI18N
+        lblBackgroundWallpaper.setText("jLabel3");
 
         javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
         LeftPanel.setLayout(LeftPanelLayout);
         LeftPanelLayout.setHorizontalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(lblBackgroundWallpaper, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
         LeftPanelLayout.setVerticalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftPanelLayout.createSequentialGroup()
-                .addComponent(jLabel3)
+                .addComponent(lblBackgroundWallpaper)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -73,9 +68,12 @@ public class LoginFrame extends javax.swing.JFrame {
         RightPanel.setBackground(new java.awt.Color(255, 255, 255));
         RightPanel.setMinimumSize(new java.awt.Dimension(400, 500));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel1.setText("LOGIN");
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo (2).png"))); // NOI18N
+        lblLogo.setText("jLabel4");
+
+        lblLoginHeader.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblLoginHeader.setForeground(new java.awt.Color(0, 153, 255));
+        lblLoginHeader.setText("LOGIN");
 
         lblManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblManagerID.setForeground(new java.awt.Color(0, 0, 0));
@@ -87,18 +85,20 @@ public class LoginFrame extends javax.swing.JFrame {
         lblPassword.setForeground(new java.awt.Color(0, 0, 0));
         lblPassword.setText("Password:");
 
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         checkboxShowPassword.setForeground(new java.awt.Color(0, 0, 0));
         checkboxShowPassword.setText("View Password");
         checkboxShowPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnLogin.setBackground(new java.awt.Color(0, 153, 255));
-        btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("I don't have an account");
+        lblIDontHaveAnAccount.setForeground(new java.awt.Color(0, 0, 0));
+        lblIDontHaveAnAccount.setText("I don't have an account");
 
         btnCreateAccount.setBackground(new java.awt.Color(255, 255, 255));
         btnCreateAccount.setForeground(new java.awt.Color(255, 0, 0));
@@ -110,16 +110,10 @@ public class LoginFrame extends javax.swing.JFrame {
         RightPanelLayout.setHorizontalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RightPanelLayout.createSequentialGroup()
-                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RightPanelLayout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel1))
-                    .addGroup(RightPanelLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lblManagerID))
+                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(RightPanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel2)
+                        .addComponent(lblIDontHaveAnAccount)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreateAccount))
                     .addGroup(RightPanelLayout.createSequentialGroup()
@@ -130,14 +124,27 @@ public class LoginFrame extends javax.swing.JFrame {
                                 .addComponent(lblPassword)
                                 .addComponent(txtManagerID, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(checkboxShowPassword)))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                .addComponent(checkboxShowPassword))))
+                    .addGroup(RightPanelLayout.createSequentialGroup()
+                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RightPanelLayout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(lblManagerID))
+                            .addGroup(RightPanelLayout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLoginHeader)
+                        .addGap(97, 97, 97)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         RightPanelLayout.setVerticalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RightPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLoginHeader)
+                    .addComponent(lblLogo))
                 .addGap(74, 74, 74)
                 .addComponent(lblManagerID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -148,11 +155,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkboxShowPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblIDontHaveAnAccount)
                     .addComponent(btnCreateAccount))
                 .addGap(37, 37, 37))
         );
@@ -218,10 +225,11 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnCreateAccount;
     private javax.swing.JButton btnLogin;
     private javax.swing.JCheckBox checkboxShowPassword;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblBackgroundWallpaper;
+    private javax.swing.JLabel lblIDontHaveAnAccount;
+    private javax.swing.JLabel lblLoginHeader;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblManagerID;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JTextField txtManagerID;

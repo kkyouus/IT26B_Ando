@@ -212,8 +212,6 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-        
-        btnSignUp.addActionListener(e -> {
 
     String id = txtManagerID.getText();
     String username = txtUsername.getText();
@@ -237,20 +235,16 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         new LoginFrame().setVisible(true);
         this.dispose();
     } else {
-        javax.swing.JOptionPane.showMessageDialog(this, "Error creating account");
+        javax.swing.JOptionPane.showMessageDialog(this, "ID already exists or error!");
     }
-});
+    
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        
-        btnLogin.addActionListener(e -> {
+        // TODO add your handling code here:       
     new LoginFrame().setVisible(true);
     this.dispose();
-});
-        
-        
+             
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

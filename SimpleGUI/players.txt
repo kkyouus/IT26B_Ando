@@ -1,0 +1,3 @@
+Messi|38|Winger|500000|Playmaker
+Neymar|34|Winger|455000|Left Winger
+Ronaldo|41|Striker|6500000|Central Forward

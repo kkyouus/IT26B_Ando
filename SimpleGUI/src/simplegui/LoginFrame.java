@@ -204,7 +204,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         
-        String id = txtManagerID.getText();
+    String id = txtManagerID.getText();
     String pass = new String(txtPassword.getPassword());
 
     if (id.isEmpty() || pass.isEmpty()) {

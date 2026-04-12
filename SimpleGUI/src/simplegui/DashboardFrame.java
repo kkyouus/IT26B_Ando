@@ -42,6 +42,19 @@ public class DashboardFrame extends javax.swing.JFrame {
     }
 }
     
+    private void searchPlayer() {
+    String keyword = txtSearch.getText().toLowerCase();
+
+    DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
+    model.setRowCount(0);
+
+    for (String[] p : players) {
+        if (p[0].toLowerCase().contains(keyword)) {
+            model.addRow(p);
+        }
+    }
+}
+    
 
     /**
      * Creates new form DashboardFrame
@@ -104,6 +117,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         btnSignOut.setForeground(new java.awt.Color(255, 0, 0));
         btnSignOut.setText("Sign Out");
         btnSignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
@@ -143,6 +161,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblSearch.setText("Search:");
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
 
         lblSort.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSort.setForeground(new java.awt.Color(0, 0, 0));
@@ -498,6 +521,34 @@ public class DashboardFrame extends javax.swing.JFrame {
     refreshTable();
 });
     }//GEN-LAST:event_cmbSortActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyReleased(java.awt.event.KeyEvent evt) {
+        searchPlayer();
+    }
+});
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
+        // TODO add your handling code here:
+        btnSignOut.addActionListener(e -> {
+
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+        this,
+        "Are you sure you want to sign out?",
+        "Confirm Sign Out",
+        javax.swing.JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+        new LoginFrame().setVisible(true);
+        this.dispose();
+    }
+
+});
+    }//GEN-LAST:event_btnSignOutActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,8 +1,63 @@
 
 package simplegui;
 
+import java.io.*;
+import javax.swing.JOptionPane;
 
 public class LoginFrame extends javax.swing.JFrame {
+    
+    // ================= CAESAR CIPHER =================
+private String encrypt(String text, int shift) {
+    StringBuilder result = new StringBuilder();
+
+    for (char c : text.toCharArray()) {
+        result.append((char) (c + shift));
+    }
+
+    return result.toString();
+}
+
+private String decrypt(String text, int shift) {
+    StringBuilder result = new StringBuilder();
+
+    for (char c : text.toCharArray()) {
+        result.append((char) (c - shift));
+    }
+
+    return result.toString();
+}
+
+private boolean checkLogin(String id, String password) {
+    try {
+        File file = new File("accounts.txt");
+        if (!file.exists()) return false;
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split("\\|");
+
+            if (parts.length == 3) {
+                String fileID = parts[0];
+                String fileUser = parts[1];
+                String filePass = decrypt(parts[2], 3);
+
+                if (fileID.equals(id) && filePass.equals(password)) {
+                    br.close();
+                    return true;
+                }
+            }
+        }
+
+        br.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return false;
+}
 
     /**
      * Creates new form LoginFrame
@@ -90,12 +145,22 @@ public class LoginFrame extends javax.swing.JFrame {
         checkboxShowPassword.setForeground(new java.awt.Color(0, 0, 0));
         checkboxShowPassword.setText("View Password");
         checkboxShowPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkboxShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkboxShowPasswordActionPerformed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(0, 153, 255));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         lblIDontHaveAnAccount.setForeground(new java.awt.Color(0, 0, 0));
         lblIDontHaveAnAccount.setText("I don't have an account");
@@ -104,6 +169,11 @@ public class LoginFrame extends javax.swing.JFrame {
         btnCreateAccount.setForeground(new java.awt.Color(255, 0, 0));
         btnCreateAccount.setText("Create Account");
         btnCreateAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCreateAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateAccountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RightPanelLayout = new javax.swing.GroupLayout(RightPanel);
         RightPanel.setLayout(RightPanelLayout);
@@ -165,7 +235,7 @@ public class LoginFrame extends javax.swing.JFrame {
         );
 
         jPanel1.add(RightPanel);
-        RightPanel.setBounds(400, 0, 400, 500);
+        RightPanel.setBounds(400, 0, 399, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,6 +253,49 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        
+        btnCreateAccount.addActionListener(e -> {
+    new CreateAccountFrame().setVisible(true);
+    this.dispose();
+});
+
+    String id = txtManagerID.getText();
+    String pass = new String(txtPassword.getPassword());
+
+    if (id.isEmpty() || pass.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill all fields!");
+        return;
+    }
+
+    if (checkLogin(id, pass)) {
+        JOptionPane.showMessageDialog(this, "Login Successful!");
+
+        new DashboardFrame().setVisible(true);
+        this.dispose();
+
+    } else {
+        JOptionPane.showMessageDialog(this, "Invalid ID or Password!");
+    }
+
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void checkboxShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowPasswordActionPerformed
+        // TODO add your handling code here:
+        if (checkboxShowPassword.isSelected()) {
+        txtPassword.setEchoChar((char) 0);
+    } else {
+        txtPassword.setEchoChar('*');
+    }
+    }//GEN-LAST:event_checkboxShowPasswordActionPerformed
+
+    private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
+        // TODO add your handling code here:
+        new CreateAccountFrame().setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     /**
      * @param args the command line arguments

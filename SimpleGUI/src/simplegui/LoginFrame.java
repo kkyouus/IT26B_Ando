@@ -125,6 +125,7 @@ public class LoginFrame extends javax.swing.JFrame {
                                 .addComponent(txtPassword)
                                 .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(RightPanelLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCreateAccount)))))
@@ -147,11 +148,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addComponent(checkboxShowPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(62, 62, 62)
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(btnCreateAccount))
-                .addGap(41, 41, 41))
+                .addGap(37, 37, 37))
         );
 
         jPanel1.add(RightPanel);

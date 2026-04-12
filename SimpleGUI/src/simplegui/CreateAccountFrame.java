@@ -98,6 +98,11 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         btnSignUp.setForeground(new java.awt.Color(255, 255, 255));
         btnSignUp.setText("Sign Up");
         btnSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
 
         lblIHaveAnAccount.setForeground(new java.awt.Color(0, 0, 0));
         lblIHaveAnAccount.setText("I have an account");
@@ -106,6 +111,11 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         btnLogin.setForeground(new java.awt.Color(255, 0, 0));
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RightPanelLayout = new javax.swing.GroupLayout(RightPanel);
         RightPanel.setLayout(RightPanelLayout);
@@ -199,6 +209,49 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        // TODO add your handling code here:
+        
+        btnSignUp.addActionListener(e -> {
+
+    String id = txtManagerID.getText();
+    String username = txtUsername.getText();
+    String password = txtPassword.getText();
+    String confirm = txtConfirmPassword.getText();
+
+    if (id.isEmpty() || username.isEmpty() || password.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please fill all fields");
+        return;
+    }
+
+    if (!password.equals(confirm)) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Passwords do not match!");
+        return;
+    }
+
+    boolean success = AuthManager.register(id, username, password);
+
+    if (success) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Account Created!");
+        new LoginFrame().setVisible(true);
+        this.dispose();
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error creating account");
+    }
+});
+    }//GEN-LAST:event_btnSignUpActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        
+        btnLogin.addActionListener(e -> {
+    new LoginFrame().setVisible(true);
+    this.dispose();
+});
+        
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments

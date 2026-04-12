@@ -238,6 +238,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         btnRead.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnRead.setText("Read");
         btnRead.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRead.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReadActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnUpdate.setText("Update");
@@ -376,6 +381,29 @@ public class DashboardFrame extends javax.swing.JFrame {
     }
 });
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
+        // TODO add your handling code here:
+        
+        btnRead.addActionListener(e -> {
+    int row = tblPlayers.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please select a player first!");
+        return;
+    }
+
+    String[] p = players.get(row);
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+        "Name: " + p[0] +
+        "\nAge: " + p[1] +
+        "\nPosition: " + p[2] +
+        "\nValue: " + p[3] +
+        "\nRole: " + p[4]
+    );
+});
+    }//GEN-LAST:event_btnReadActionPerformed
 
     /**
      * @param args the command line arguments

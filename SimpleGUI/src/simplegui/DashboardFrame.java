@@ -32,7 +32,8 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblSort = new javax.swing.JLabel();
         cmbSort = new javax.swing.JComboBox<>();
         TablePanel = new javax.swing.JPanel();
-        tblPlayers = new javax.swing.JScrollPane();
+        scrollPlayers = new javax.swing.JScrollPane();
+        tblPlayers = new javax.swing.JTable();
         RightPanel = new javax.swing.JPanel();
         ImagePanel = new javax.swing.JPanel();
         lblPictureFootballField = new javax.swing.JLabel();
@@ -141,20 +142,33 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         TablePanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        tblPlayers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrollPlayers.setViewportView(tblPlayers);
+
         javax.swing.GroupLayout TablePanelLayout = new javax.swing.GroupLayout(TablePanel);
         TablePanel.setLayout(TablePanelLayout);
         TablePanelLayout.setHorizontalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TablePanelLayout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(tblPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
         TablePanelLayout.setVerticalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TablePanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(tblPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -389,7 +403,8 @@ public class DashboardFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPictureFootballField;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblSort;
-    private javax.swing.JScrollPane tblPlayers;
+    private javax.swing.JScrollPane scrollPlayers;
+    private javax.swing.JTable tblPlayers;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

@@ -143,14 +143,9 @@ public class DashboardFrame extends javax.swing.JFrame {
         TablePanel.setBackground(new java.awt.Color(255, 255, 255));
 
         tblPlayers.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Player Name", "Age", "Position", "Market Value", "Best Role"
             }
         ));
         scrollPlayers.setViewportView(tblPlayers);

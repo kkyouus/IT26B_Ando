@@ -16,6 +16,32 @@ public class DashboardFrame extends javax.swing.JFrame {
         model.addRow(p);
     }
 }
+    private void bubbleSortByName() {
+    for (int i = 0; i < players.size() - 1; i++) {
+        for (int j = 0; j < players.size() - i - 1; j++) {
+            if (players.get(j)[0].compareToIgnoreCase(players.get(j + 1)[0]) > 0) {
+                String[] temp = players.get(j);
+                players.set(j, players.get(j + 1));
+                players.set(j + 1, temp);
+            }
+        }
+    }
+}
+    private void bubbleSortByAge() {
+    for (int i = 0; i < players.size() - 1; i++) {
+        for (int j = 0; j < players.size() - i - 1; j++) {
+            int age1 = Integer.parseInt(players.get(j)[1]);
+            int age2 = Integer.parseInt(players.get(j + 1)[1]);
+
+            if (age1 > age2) {
+                String[] temp = players.get(j);
+                players.set(j, players.get(j + 1));
+                players.set(j + 1, temp);
+            }
+        }
+    }
+}
+    
 
     /**
      * Creates new form DashboardFrame
@@ -123,8 +149,13 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblSort.setText("Sort:");
 
         cmbSort.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmbSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort by Name", "Sort by Age" }));
         cmbSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmbSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSortActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
         SearchPanel.setLayout(SearchPanelLayout);
@@ -247,10 +278,20 @@ public class DashboardFrame extends javax.swing.JFrame {
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CRUDPanelLayout = new javax.swing.GroupLayout(CRUDPanel);
         CRUDPanel.setLayout(CRUDPanelLayout);
@@ -404,6 +445,59 @@ public class DashboardFrame extends javax.swing.JFrame {
     );
 });
     }//GEN-LAST:event_btnReadActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        btnUpdate.addActionListener(e -> {
+    int row = tblPlayers.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please select a player to update!");
+        return;
+    }
+
+    String[] p = players.get(row);
+
+    String name = javax.swing.JOptionPane.showInputDialog(this, "Edit Name:", p[0]);
+    String age = javax.swing.JOptionPane.showInputDialog(this, "Edit Age:", p[1]);
+    String position = javax.swing.JOptionPane.showInputDialog(this, "Edit Position:", p[2]);
+    String value = javax.swing.JOptionPane.showInputDialog(this, "Edit Market Value:", p[3]);
+    String role = javax.swing.JOptionPane.showInputDialog(this, "Edit Best Role:", p[4]);
+
+    players.set(row, new String[]{name, age, position, value, role});
+    refreshTable();
+});
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        btnDelete.addActionListener(e -> {
+    int row = tblPlayers.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please select a player to delete!");
+        return;
+    }
+
+    players.remove(row);
+    refreshTable();
+});
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void cmbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortActionPerformed
+        // TODO add your handling code here:
+        cmbSort.addActionListener(e -> {
+    String selected = cmbSort.getSelectedItem().toString();
+
+    if (selected.equals("Sort by Name")) {
+        bubbleSortByName();
+    } else if (selected.equals("Sort by Age")) {
+        bubbleSortByAge();
+    }
+
+    refreshTable();
+});
+    }//GEN-LAST:event_cmbSortActionPerformed
 
     /**
      * @param args the command line arguments

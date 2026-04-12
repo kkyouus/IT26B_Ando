@@ -34,10 +34,10 @@ public class LoginFrame extends javax.swing.JFrame {
         txtManagerID = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        checkboxShowPassword = new javax.swing.JCheckBox();
         btnLogin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnCreateAccount = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -81,6 +81,10 @@ public class LoginFrame extends javax.swing.JFrame {
         lblPassword.setForeground(new java.awt.Color(0, 0, 0));
         lblPassword.setText("Password:");
 
+        checkboxShowPassword.setForeground(new java.awt.Color(0, 0, 0));
+        checkboxShowPassword.setText("View Password");
+        checkboxShowPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         btnLogin.setBackground(new java.awt.Color(0, 153, 255));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,9 +99,6 @@ public class LoginFrame extends javax.swing.JFrame {
         btnCreateAccount.setText("Create Account");
         btnCreateAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox1.setText("View Password");
-
         javax.swing.GroupLayout RightPanelLayout = new javax.swing.GroupLayout(RightPanel);
         RightPanel.setLayout(RightPanelLayout);
         RightPanelLayout.setHorizontalGroup(
@@ -110,7 +111,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addGroup(RightPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
+                            .addComponent(checkboxShowPassword)
                             .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lblManagerID)
                                 .addComponent(lblPassword)
@@ -137,7 +138,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(checkboxShowPassword)
                 .addGap(16, 16, 16)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
@@ -207,7 +208,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPanel RightPanel;
     private javax.swing.JButton btnCreateAccount;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox checkboxShowPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

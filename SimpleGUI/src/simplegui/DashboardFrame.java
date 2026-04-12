@@ -61,6 +61,10 @@ public class DashboardFrame extends javax.swing.JFrame {
      */
     public DashboardFrame() {
         initComponents();
+        
+        players = PlayerManager.loadPlayers();
+        refreshTable();
+        PlayerManager.savePlayers(players);
     }
 
     /**
@@ -483,6 +487,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     players.set(row, new String[]{name, age, position, value, role});
     refreshTable();
+    PlayerManager.savePlayers(players);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -496,6 +501,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     players.remove(row);
     refreshTable();
+    PlayerManager.savePlayers(players);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void cmbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortActionPerformed

@@ -163,12 +163,17 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         lblSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSearch.setForeground(new java.awt.Color(0, 0, 0));
-        lblSearch.setText("Search:");
+        lblSearch.setText("Search Name:");
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
 
@@ -617,6 +622,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnSignOutActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        searchPlayer();
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments

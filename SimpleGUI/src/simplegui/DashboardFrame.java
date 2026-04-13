@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static simplegui.PlayerManager.loadPlayers;
 import simplegui.connectionDB;
 
 public class DashboardFrame extends javax.swing.JFrame {
@@ -15,9 +14,7 @@ public class DashboardFrame extends javax.swing.JFrame {
     
     public DashboardFrame() {
         initComponents();
-        
         loadPlayers();
-        
     }
 
     private void loadPlayers() {

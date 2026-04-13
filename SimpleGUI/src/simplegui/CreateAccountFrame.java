@@ -222,12 +222,12 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     String confirm = txtConfirmPassword.getText();
 
     if (id.isEmpty() || username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please fill all fields");
+        javax.swing.JOptionPane.showMessageDialog(this, "Please fill all fields");
         return;
     }
 
     if (!password.equals(confirm)) {
-        JOptionPane.showMessageDialog(this, "Passwords do not match!");
+        javax.swing.JOptionPane.showMessageDialog(this, "Passwords do not match!");
         return;
     }
 
@@ -241,11 +241,11 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
         pst.setString(1, id);
         pst.setString(2, username);
-        pst.setString(3, password);
+        pst.setString(3, CaesarCipher.encrypt(password));
 
         pst.executeUpdate();
 
-        JOptionPane.showMessageDialog(this, "Account Created Successfully!");
+        javax.swing.JOptionPane.showMessageDialog(this, "Account Created Successfully!");
 
         conn.close();
 
@@ -253,7 +253,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         this.dispose();
 
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
     }
     
     }//GEN-LAST:event_btnSignUpActionPerformed

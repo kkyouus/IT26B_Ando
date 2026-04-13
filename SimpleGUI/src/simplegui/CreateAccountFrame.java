@@ -221,24 +221,39 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     String password = txtPassword.getText();
     String confirm = txtConfirmPassword.getText();
 
-    if (id.isEmpty() || username.isEmpty() || password.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Please fill all fields");
+    if (id.isEmpty() || username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill all fields");
         return;
     }
 
     if (!password.equals(confirm)) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Passwords do not match!");
+        JOptionPane.showMessageDialog(this, "Passwords do not match!");
         return;
     }
 
-    boolean success = AuthManager.register(id, username, password);
+    try {
 
-    if (success) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Account Created!");
+        Connection conn = connectionDB.getConnection();
+
+        String sql = "INSERT INTO users (manager_id, username, password) VALUES (?, ?, ?)";
+
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        pst.setString(1, id);
+        pst.setString(2, username);
+        pst.setString(3, password);
+
+        pst.executeUpdate();
+
+        JOptionPane.showMessageDialog(this, "Account Created Successfully!");
+
+        conn.close();
+
         new LoginFrame().setVisible(true);
         this.dispose();
-    } else {
-        javax.swing.JOptionPane.showMessageDialog(this, "ID already exists or error!");
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
     }
     
     }//GEN-LAST:event_btnSignUpActionPerformed

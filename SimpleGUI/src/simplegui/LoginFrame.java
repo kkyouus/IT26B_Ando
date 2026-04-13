@@ -3,6 +3,9 @@ package simplegui;
 
 import java.io.*;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class LoginFrame extends javax.swing.JFrame {
     
@@ -212,14 +215,43 @@ public class LoginFrame extends javax.swing.JFrame {
         return;
     }
 
-    if (AuthManager.login(id, pass)) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Login Successful!");
+    try {
 
-        new DashboardFrame().setVisible(true);
-        this.dispose();
+        Connection conn = connectionDB.getConnection();
 
-    } else {
-        javax.swing.JOptionPane.showMessageDialog(this, "Invalid ID or Password!");
+        String sql = "SELECT * FROM users WHERE manager_id=? AND password=?";
+
+        PreparedStatement pst = conn.prepareStatement(sql);
+        pst.setString(1, id);
+        pst.setString(2, pass);
+
+        ResultSet rs = pst.executeQuery();
+
+        if (rs.next()) {
+
+            int confirm = javax.swing.JOptionPane.showConfirmDialog(
+                    this,
+                    "Are you sure you want to login?",
+                    "Confirm Login",
+                    javax.swing.JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+
+                javax.swing.JOptionPane.showMessageDialog(this, "Login Successful!");
+
+                new DashboardFrame().setVisible(true);
+                this.dispose();
+            }
+
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid ID or Password!");
+        }
+
+        conn.close();
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
     }
 
     }//GEN-LAST:event_btnLoginActionPerformed

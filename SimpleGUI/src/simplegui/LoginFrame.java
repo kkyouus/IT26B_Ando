@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import simplegui.CaesarCipher;
 
 public class LoginFrame extends javax.swing.JFrame {
     
@@ -223,7 +224,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1, id);
-        pst.setString(2, pass);
+        pst.setString(2, CaesarCipher.encrypt(pass));
 
         ResultSet rs = pst.executeQuery();
 

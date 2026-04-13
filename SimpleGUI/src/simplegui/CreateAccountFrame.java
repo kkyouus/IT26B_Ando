@@ -4,6 +4,7 @@ package simplegui;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import simplegui.CaesarCipher;
 
 public class CreateAccountFrame extends javax.swing.JFrame {
 

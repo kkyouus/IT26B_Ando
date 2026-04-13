@@ -1,5 +1,5 @@
 
-package simplegui;
+package simplegui; 
 
 import java.io.*;
 import javax.swing.JOptionPane;

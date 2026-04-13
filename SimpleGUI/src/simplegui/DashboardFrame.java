@@ -1,8 +1,6 @@
 
 package simplegui;
 
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,66 +10,22 @@ import javax.swing.table.DefaultTableModel;
 
 public class DashboardFrame extends javax.swing.JFrame {
     
-    private ArrayList<String[]> players = new ArrayList<>();
     
-    private void refreshTable() {
-    DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
-    model.setRowCount(0); // clear table
+    public DashboardFrame() {
+        initComponents();
+        
+        loadPlayers();
+        
+    }
 
-    for (String[] p : players) {
-        model.addRow(p);
-    }
-}
-    private void bubbleSortByName() {
-    for (int i = 0; i < players.size() - 1; i++) {
-        for (int j = 0; j < players.size() - i - 1; j++) {
-            if (players.get(j)[0].compareToIgnoreCase(players.get(j + 1)[0]) > 0) {
-                String[] temp = players.get(j);
-                players.set(j, players.get(j + 1));
-                players.set(j + 1, temp);
-            }
-        }
-    }
-}
-    private void bubbleSortByAge() {
-    for (int i = 0; i < players.size() - 1; i++) {
-        for (int j = 0; j < players.size() - i - 1; j++) {
-            int age1 = Integer.parseInt(players.get(j)[1]);
-            int age2 = Integer.parseInt(players.get(j + 1)[1]);
-
-            if (age1 > age2) {
-                String[] temp = players.get(j);
-                players.set(j, players.get(j + 1));
-                players.set(j + 1, temp);
-            }
-        }
-    }
-}
     
-    private void searchPlayer() {
-    String keyword = txtSearch.getText().toLowerCase();
 
-    DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
-    model.setRowCount(0);
-
-    for (String[] p : players) {
-        if (p[0].toLowerCase().contains(keyword)) {
-            model.addRow(p);
-        }
-    }
 }
-    
 
     /**
      * Creates new form DashboardFrame
      */
-    public DashboardFrame() {
-        initComponents();
-        
-        players = PlayerManager.loadPlayers();
-        refreshTable();
-        PlayerManager.savePlayers(players);
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -448,8 +402,29 @@ public class DashboardFrame extends javax.swing.JFrame {
     String role = javax.swing.JOptionPane.showInputDialog(this, "Enter Best Role:");
 
     if (name != null && age != null) {
-        players.add(new String[]{name, age, position, value, role});
-        refreshTable();
+        try {
+
+    Connection conn = connectionDB.getConnection();
+
+    String sql = "INSERT INTO players (name, age, position, market_value, best_role) VALUES (?, ?, ?, ?, ?)";
+
+    PreparedStatement pst = conn.prepareStatement(sql);
+
+    pst.setString(1, name);
+    pst.setInt(2, Integer.parseInt(age));
+    pst.setString(3, position);
+    pst.setString(4, value);
+    pst.setString(5, role);
+
+    pst.executeUpdate();
+
+    conn.close();
+
+    loadPlayers();
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+}
     }
     }//GEN-LAST:event_btnCreateActionPerformed
 

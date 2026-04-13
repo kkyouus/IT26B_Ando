@@ -1,4 +1,3 @@
-
 package simplegui;
 
 import java.sql.Connection;
@@ -7,10 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import simplegui.connectionDB;
 
 public class DashboardFrame extends javax.swing.JFrame {
-    
     
     public DashboardFrame() {
         initComponents();
@@ -18,18 +15,16 @@ public class DashboardFrame extends javax.swing.JFrame {
     }
 
     private void loadPlayers() {
-        try {
-            Connection conn = connectionDB.getConnection();
-
-            String sql = "SELECT * FROM players";
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+        try (Connection conn = connectionDB.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM players")) {
 
             DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
             model.setRowCount(0);
 
             while (rs.next()) {
                 model.addRow(new Object[]{
+                    rs.getInt("id"),
                     rs.getString("name"),
                     rs.getInt("age"),
                     rs.getString("position"),
@@ -37,8 +32,6 @@ public class DashboardFrame extends javax.swing.JFrame {
                     rs.getString("best_role")
                 });
             }
-
-            conn.close();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error loading players: " + e.getMessage());
@@ -49,13 +42,11 @@ public class DashboardFrame extends javax.swing.JFrame {
     private void searchPlayer() {
         String keyword = txtSearch.getText();
 
-        try {
-            Connection conn = connectionDB.getConnection();
+        try (Connection conn = connectionDB.getConnection();
+             PreparedStatement pst = conn.prepareStatement(
+                     "SELECT * FROM players WHERE name LIKE ?")) {
 
-            String sql = "SELECT * FROM players WHERE name LIKE ?";
-            PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, "%" + keyword + "%");
-
             ResultSet rs = pst.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
@@ -63,6 +54,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
             while (rs.next()) {
                 model.addRow(new Object[]{
+                    rs.getInt("id"),
                     rs.getString("name"),
                     rs.getInt("age"),
                     rs.getString("position"),
@@ -71,19 +63,10 @@ public class DashboardFrame extends javax.swing.JFrame {
                 });
             }
 
-            conn.close();
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Search error: " + e.getMessage());
         }
     }
-
-
-
-    /**
-     * Creates new form DashboardFrame
-     */
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -234,7 +217,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         tblPlayers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {},
             new String [] {
-                "Player Name", "Age", "Position", "Market Value", "Best Role"
+                "ID", "Player Name", "Age", "Position", "Market Value", "Best Role"
             }
         ));
         scrollPlayers.setViewportView(tblPlayers);
@@ -452,32 +435,37 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-
-    String name = JOptionPane.showInputDialog(this, "Enter Player Name:");
-        String age = JOptionPane.showInputDialog(this, "Enter Age:");
+        String name = JOptionPane.showInputDialog(this, "Enter Player Name:");
+        String ageStr = JOptionPane.showInputDialog(this, "Enter Age:");
         String position = JOptionPane.showInputDialog(this, "Enter Position:");
         String value = JOptionPane.showInputDialog(this, "Enter Market Value:");
         String role = JOptionPane.showInputDialog(this, "Enter Best Role:");
 
-        if (name == null || age == null) return;
+        if (name == null || ageStr == null || name.isEmpty() || ageStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Name and Age are required!");
+            return;
+        }
 
         try {
-            Connection conn = connectionDB.getConnection();
+            int age = Integer.parseInt(ageStr);
 
-            String sql = "INSERT INTO players (name, age, position, market_value, best_role) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement pst = conn.prepareStatement(sql);
+            try (Connection conn = connectionDB.getConnection();
+                 PreparedStatement pst = conn.prepareStatement(
+                         "INSERT INTO players (name, age, position, market_value, best_role) VALUES (?, ?, ?, ?, ?)")) {
 
-            pst.setString(1, name);
-            pst.setInt(2, Integer.parseInt(age));
-            pst.setString(3, position);
-            pst.setString(4, value);
-            pst.setString(5, role);
+                pst.setString(1, name);
+                pst.setInt(2, age);
+                pst.setString(3, position);
+                pst.setString(4, value);
+                pst.setString(5, role);
 
-            pst.executeUpdate();
-            conn.close();
+                pst.executeUpdate();
+            }
 
             loadPlayers();
 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Age must be a number!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
@@ -485,64 +473,62 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
         // TODO add your handling code here:
-        
-    int row = tblPlayers.getSelectedRow();
+        int row = tblPlayers.getSelectedRow();
 
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Select a player first!");
             return;
         }
 
-        String name = tblPlayers.getValueAt(row, 0).toString();
-        String age = tblPlayers.getValueAt(row, 1).toString();
-        String position = tblPlayers.getValueAt(row, 2).toString();
-        String value = tblPlayers.getValueAt(row, 3).toString();
-        String role = tblPlayers.getValueAt(row, 4).toString();
+        String info =
+                "ID: " + tblPlayers.getValueAt(row, 0) +
+                "\nName: " + tblPlayers.getValueAt(row, 1) +
+                "\nAge: " + tblPlayers.getValueAt(row, 2) +
+                "\nPosition: " + tblPlayers.getValueAt(row, 3) +
+                "\nMarket Value: " + tblPlayers.getValueAt(row, 4) +
+                "\nBest Role: " + tblPlayers.getValueAt(row, 5);
 
-        JOptionPane.showMessageDialog(this,
-                "Name: " + name +
-                "\nAge: " + age +
-                "\nPosition: " + position +
-                "\nMarket Value: " + value +
-                "\nBest Role: " + role
-        );
+        JOptionPane.showMessageDialog(this, info);
     }//GEN-LAST:event_btnReadActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-    int row = tblPlayers.getSelectedRow();
+        int row = tblPlayers.getSelectedRow();
 
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Select a player!");
             return;
         }
 
-        String oldName = tblPlayers.getValueAt(row, 0).toString();
+        int id = (int) tblPlayers.getValueAt(row, 0);
 
-        String name = JOptionPane.showInputDialog(this, "Edit Name:");
-        String age = JOptionPane.showInputDialog(this, "Edit Age:");
-        String position = JOptionPane.showInputDialog(this, "Edit Position:");
-        String value = JOptionPane.showInputDialog(this, "Edit Market Value:");
-        String role = JOptionPane.showInputDialog(this, "Edit Best Role:");
+        String name = JOptionPane.showInputDialog(this, "Edit Name:", tblPlayers.getValueAt(row, 1));
+        String ageStr = JOptionPane.showInputDialog(this, "Edit Age:", tblPlayers.getValueAt(row, 2));
+        String position = JOptionPane.showInputDialog(this, "Edit Position:", tblPlayers.getValueAt(row, 3));
+        String value = JOptionPane.showInputDialog(this, "Edit Market Value:", tblPlayers.getValueAt(row, 4));
+        String role = JOptionPane.showInputDialog(this, "Edit Best Role:", tblPlayers.getValueAt(row, 5));
 
         try {
-            Connection conn = connectionDB.getConnection();
+            int age = Integer.parseInt(ageStr);
 
-            String sql = "UPDATE players SET name=?, age=?, position=?, market_value=?, best_role=? WHERE name=?";
-            PreparedStatement pst = conn.prepareStatement(sql);
+            try (Connection conn = connectionDB.getConnection();
+                 PreparedStatement pst = conn.prepareStatement(
+                         "UPDATE players SET name=?, age=?, position=?, market_value=?, best_role=? WHERE id=?")) {
 
-            pst.setString(1, name);
-            pst.setInt(2, Integer.parseInt(age));
-            pst.setString(3, position);
-            pst.setString(4, value);
-            pst.setString(5, role);
-            pst.setString(6, oldName);
+                pst.setString(1, name);
+                pst.setInt(2, age);
+                pst.setString(3, position);
+                pst.setString(4, value);
+                pst.setString(5, role);
+                pst.setInt(6, id);
 
-            pst.executeUpdate();
-            conn.close();
+                pst.executeUpdate();
+            }
 
             loadPlayers();
 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Age must be a number!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Update error: " + e.getMessage());
         }
@@ -550,24 +536,28 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-    int row = tblPlayers.getSelectedRow();
+        int row = tblPlayers.getSelectedRow();
 
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Select a player!");
             return;
         }
 
-        String name = tblPlayers.getValueAt(row, 0).toString();
+        int id = (int) tblPlayers.getValueAt(row, 0);
 
-        try {
-            Connection conn = connectionDB.getConnection();
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Delete this player?",
+                "Confirm",
+                JOptionPane.YES_NO_OPTION);
 
-            String sql = "DELETE FROM players WHERE name=?";
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, name);
+        if (confirm != JOptionPane.YES_OPTION) return;
 
+        try (Connection conn = connectionDB.getConnection();
+             PreparedStatement pst = conn.prepareStatement(
+                     "DELETE FROM players WHERE id=?")) {
+
+            pst.setInt(1, id);
             pst.executeUpdate();
-            conn.close();
 
             loadPlayers();
 
@@ -578,27 +568,22 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void cmbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortActionPerformed
         // TODO add your handling code here:
-    String selected = cmbSort.getSelectedItem().toString();
+        String selected = cmbSort.getSelectedItem().toString();
 
-        try {
-            Connection conn = connectionDB.getConnection();
+        String sql = selected.equals("Sort by Name")
+                ? "SELECT * FROM players ORDER BY name ASC"
+                : "SELECT * FROM players ORDER BY age ASC";
 
-            String sql;
-
-            if (selected.equals("Sort by Name")) {
-                sql = "SELECT * FROM players ORDER BY name ASC";
-            } else {
-                sql = "SELECT * FROM players ORDER BY age ASC";
-            }
-
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+        try (Connection conn = connectionDB.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
             DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
             model.setRowCount(0);
 
             while (rs.next()) {
                 model.addRow(new Object[]{
+                    rs.getInt("id"),
                     rs.getString("name"),
                     rs.getInt("age"),
                     rs.getString("position"),
@@ -606,8 +591,6 @@ public class DashboardFrame extends javax.swing.JFrame {
                     rs.getString("best_role")
                 });
             }
-
-            conn.close();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Sort error: " + e.getMessage());
@@ -621,8 +604,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         // TODO add your handling code here:
-        
-    int confirm = JOptionPane.showConfirmDialog(
+        int confirm = JOptionPane.showConfirmDialog(
                 this,
                 "Are you sure you want to sign out?",
                 "Confirm",

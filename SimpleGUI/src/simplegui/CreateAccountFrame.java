@@ -1,6 +1,9 @@
 
 package simplegui;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 public class CreateAccountFrame extends javax.swing.JFrame {
 

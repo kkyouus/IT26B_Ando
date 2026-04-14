@@ -133,9 +133,9 @@ public class DashboardFrame extends javax.swing.JFrame {
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(30, 30, 30)
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(186, 186, 186)
+                .addGap(180, 180, 180)
                 .addComponent(lblFootballManagerHeader)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addComponent(btnSignOut)
@@ -149,11 +149,11 @@ public class DashboardFrame extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(btnSignOut))
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLogo))
-                    .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(lblFootballManagerHeader)))
+                        .addComponent(lblFootballManagerHeader))
+                    .addGroup(HeaderPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblLogo)))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -416,7 +416,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LeftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(RightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 1, Short.MAX_VALUE)
                 .addComponent(FooterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );

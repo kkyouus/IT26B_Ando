@@ -122,17 +122,17 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblFootballManagerHeader.setText("FOOTBALL MANAGER");
         HeaderPanel.add(lblFootballManagerHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 35, -1, -1));
 
-        btnSignOut.setBackground(new java.awt.Color(255, 255, 255));
-        btnSignOut.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnSignOut.setForeground(new java.awt.Color(255, 0, 0));
-        btnSignOut.setText("Sign Out");
+        btnSignOut.setBackground(new java.awt.Color(0, 153, 255));
+        btnSignOut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSignOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignOut.setText("SIGN OUT");
         btnSignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignOutActionPerformed(evt);
             }
         });
-        HeaderPanel.add(btnSignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 45, -1, -1));
+        HeaderPanel.add(btnSignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/header (1).jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -146,7 +146,9 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblSearch.setForeground(new java.awt.Color(0, 0, 0));
         lblSearch.setText("Search Name:");
 
+        txtSearch.setBackground(new java.awt.Color(0, 153, 255));
         txtSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSearch.setForeground(new java.awt.Color(255, 255, 255));
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
@@ -162,7 +164,9 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblSort.setForeground(new java.awt.Color(0, 0, 0));
         lblSort.setText("Sort:");
 
+        cmbSort.setBackground(new java.awt.Color(0, 153, 255));
         cmbSort.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbSort.setForeground(new java.awt.Color(255, 255, 255));
         cmbSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort by Name", "Sort by Age" }));
         cmbSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbSort.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +204,11 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         TablePanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        scrollPlayers.setBackground(new java.awt.Color(0, 153, 255));
+        scrollPlayers.setForeground(new java.awt.Color(255, 255, 255));
+
+        tblPlayers.setBackground(new java.awt.Color(0, 153, 255));
+        tblPlayers.setForeground(new java.awt.Color(255, 255, 255));
         tblPlayers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {},
             new String [] {
@@ -264,14 +273,16 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        CRUDPanel.setBackground(new java.awt.Color(255, 255, 255));
+        CRUDPanel.setBackground(new java.awt.Color(0, 153, 255));
         CRUDPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblManage.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblManage.setForeground(new java.awt.Color(0, 0, 0));
+        lblManage.setForeground(new java.awt.Color(255, 255, 255));
         lblManage.setText("Manage Function:");
 
+        btnCreate.setBackground(new java.awt.Color(0, 153, 255));
         btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create");
         btnCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +291,9 @@ public class DashboardFrame extends javax.swing.JFrame {
             }
         });
 
+        btnRead.setBackground(new java.awt.Color(0, 153, 255));
         btnRead.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnRead.setForeground(new java.awt.Color(255, 255, 255));
         btnRead.setText("Read");
         btnRead.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRead.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +302,9 @@ public class DashboardFrame extends javax.swing.JFrame {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(0, 153, 255));
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +313,9 @@ public class DashboardFrame extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(0, 153, 255));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {

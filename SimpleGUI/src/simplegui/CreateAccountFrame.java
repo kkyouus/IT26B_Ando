@@ -30,8 +30,6 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         RightPanel = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         lblSignUpHeader = new javax.swing.JLabel();
-        lblManagerID = new javax.swing.JLabel();
-        txtManagerID = new javax.swing.JTextField();
         lblUsername = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
@@ -50,7 +48,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
         LeftPanel.setBackground(new java.awt.Color(0, 153, 255));
 
-        lblBackgroundWallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo2 (1) (1).png"))); // NOI18N
+        lblBackgroundWallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo2 (1).png"))); // NOI18N
         lblBackgroundWallpaper.setText("jLabel2");
 
         javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
@@ -61,7 +59,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         );
         LeftPanelLayout.setVerticalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBackgroundWallpaper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblBackgroundWallpaper)
         );
 
         RightPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -72,12 +70,6 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         lblSignUpHeader.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblSignUpHeader.setForeground(new java.awt.Color(0, 153, 255));
         lblSignUpHeader.setText("SIGN UP");
-
-        lblManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblManagerID.setForeground(new java.awt.Color(0, 0, 0));
-        lblManagerID.setText("Manager ID:");
-
-        txtManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         lblUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(0, 0, 0));
@@ -126,30 +118,26 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         RightPanelLayout.setHorizontalGroup(
             RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RightPanelLayout.createSequentialGroup()
-                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RightPanelLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lblIHaveAnAccount)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLogin))
-                    .addGroup(RightPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblManagerID)
-                                .addComponent(txtManagerID, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblUsername)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblPassword)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblConfirmPassword)
-                                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
-                                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblSignUpHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(60, 60, 60))))))
+                .addGap(35, 35, 35)
+                .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblUsername)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPassword)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblConfirmPassword)
+                        .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightPanelLayout.createSequentialGroup()
+                            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblSignUpHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(60, 60, 60))
+                        .addGroup(RightPanelLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(lblIHaveAnAccount)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnLogin))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         RightPanelLayout.setVerticalGroup(
@@ -159,25 +147,21 @@ public class CreateAccountFrame extends javax.swing.JFrame {
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSignUpHeader)
                     .addComponent(lblLogo))
-                .addGap(30, 30, 30)
-                .addComponent(lblManagerID)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtManagerID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(43, 43, 43)
                 .addComponent(lblUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblConfirmPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(24, 24, 24)
                 .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(31, 31, 31)
                 .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIHaveAnAccount)
                     .addComponent(btnLogin))
@@ -196,7 +180,9 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(RightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(LeftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(LeftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,45 +203,41 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
 
-    String id = txtManagerID.getText();
     String username = txtUsername.getText();
-    String password = txtPassword.getText();
-    String confirm = txtConfirmPassword.getText();
+String password = txtPassword.getText();
+String confirm = txtConfirmPassword.getText();
 
-    if (id.isEmpty() || username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Please fill all fields");
-        return;
-    }
+if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Please fill all fields");
+    return;
+}
 
-    if (!password.equals(confirm)) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Passwords do not match!");
-        return;
-    }
+if (!password.equals(confirm)) {
+    JOptionPane.showMessageDialog(this, "Passwords do not match!");
+    return;
+}
 
-    try {
+try {
+    Connection conn = connectionDB.getConnection();
 
-        Connection conn = connectionDB.getConnection();
+    String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+    PreparedStatement pst = conn.prepareStatement(sql);
 
-        String sql = "INSERT INTO users (manager_id, username, password) VALUES (?, ?, ?)";
+    pst.setString(1, username);
+    pst.setString(2, CaesarCipher.encrypt(password));
 
-        PreparedStatement pst = conn.prepareStatement(sql);
+    pst.executeUpdate();
 
-        pst.setString(1, id);
-        pst.setString(2, username);
-        pst.setString(3, CaesarCipher.encrypt(password));
+    JOptionPane.showMessageDialog(this, "Account Created Successfully!");
 
-        pst.executeUpdate();
+    conn.close();
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Account Created Successfully!");
+    new LoginFrame().setVisible(true);
+    this.dispose();
 
-        conn.close();
-
-        new LoginFrame().setVisible(true);
-        this.dispose();
-
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+}
     
     }//GEN-LAST:event_btnSignUpActionPerformed
 
@@ -311,12 +293,10 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblConfirmPassword;
     private javax.swing.JLabel lblIHaveAnAccount;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblManagerID;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSignUpHeader;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtConfirmPassword;
-    private javax.swing.JTextField txtManagerID;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

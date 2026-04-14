@@ -83,7 +83,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         lblManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblManagerID.setForeground(new java.awt.Color(0, 0, 0));
-        lblManagerID.setText("Manager ID:");
+        lblManagerID.setText("Username:");
 
         txtManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -208,52 +208,49 @@ public class LoginFrame extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         
-    String id = txtManagerID.getText();
-    String pass = new String(txtPassword.getPassword());
+    String username = txtManagerID.getText();
+String pass = new String(txtPassword.getPassword());
 
-    if (id.isEmpty() || pass.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Please fill all fields!");
-        return;
-    }
+if (username.isEmpty() || pass.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Please fill all fields!");
+    return;
+}
 
-    try {
+try {
+    Connection conn = connectionDB.getConnection();
 
-        Connection conn = connectionDB.getConnection();
+    String sql = "SELECT * FROM users WHERE username=? AND password=?";
+    PreparedStatement pst = conn.prepareStatement(sql);
 
-        String sql = "SELECT * FROM users WHERE manager_id=? AND password=?";
+    pst.setString(1, username);
+    pst.setString(2, CaesarCipher.encrypt(pass));
 
-        PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setString(1, id);
-        pst.setString(2, CaesarCipher.encrypt(pass));
+    ResultSet rs = pst.executeQuery();
 
-        ResultSet rs = pst.executeQuery();
+    if (rs.next()) {
 
-        if (rs.next()) {
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to login?",
+                "Confirm Login",
+                JOptionPane.YES_NO_OPTION
+        );
 
-            int confirm = javax.swing.JOptionPane.showConfirmDialog(
-                    this,
-                    "Are you sure you want to login?",
-                    "Confirm Login",
-                    javax.swing.JOptionPane.YES_NO_OPTION
-            );
-
-            if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-
-                javax.swing.JOptionPane.showMessageDialog(this, "Login Successful!");
-
-                new DashboardFrame().setVisible(true);
-                this.dispose();
-            }
-
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Invalid ID or Password!");
+        if (confirm == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+            new DashboardFrame().setVisible(true);
+            this.dispose();
         }
 
-        conn.close();
-
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    } else {
+        JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
     }
+
+    conn.close();
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+}
 
     }//GEN-LAST:event_btnLoginActionPerformed
 

@@ -29,6 +29,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         LeftPanel = new javax.swing.JPanel();
         lblBackgroundWallpaper = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         RightPanel = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         lblLoginHeader = new javax.swing.JLabel();
@@ -51,22 +52,15 @@ public class LoginFrame extends javax.swing.JFrame {
 
         LeftPanel.setBackground(new java.awt.Color(0, 153, 255));
         LeftPanel.setPreferredSize(new java.awt.Dimension(400, 500));
+        LeftPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBackgroundWallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo2 (1).png"))); // NOI18N
         lblBackgroundWallpaper.setText("jLabel3");
+        LeftPanel.add(lblBackgroundWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
-        javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
-        LeftPanel.setLayout(LeftPanelLayout);
-        LeftPanelLayout.setHorizontalGroup(
-            LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBackgroundWallpaper, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
-        );
-        LeftPanelLayout.setVerticalGroup(
-            LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftPanelLayout.createSequentialGroup()
-                .addComponent(lblBackgroundWallpaper)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/body.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        LeftPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 500));
 
         jPanel1.add(LeftPanel);
         LeftPanel.setBounds(0, 0, 400, 500);
@@ -182,7 +176,7 @@ public class LoginFrame extends javax.swing.JFrame {
         );
 
         jPanel1.add(RightPanel);
-        RightPanel.setBounds(400, 0, 400, 500);
+        RightPanel.setBounds(400, 0, 399, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,6 +302,7 @@ try {
     private javax.swing.JButton btnCreateAccount;
     private javax.swing.JButton btnLogin;
     private javax.swing.JCheckBox checkboxShowPassword;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBackgroundWallpaper;
     private javax.swing.JLabel lblIDontHaveAnAccount;

@@ -27,6 +27,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         LeftPanel = new javax.swing.JPanel();
         lblBackgroundWallpaper = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         RightPanel = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         lblSignUpHeader = new javax.swing.JLabel();
@@ -47,20 +48,15 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         LeftPanel.setBackground(new java.awt.Color(0, 153, 255));
+        LeftPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBackgroundWallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo2 (1).png"))); // NOI18N
         lblBackgroundWallpaper.setText("jLabel2");
+        LeftPanel.add(lblBackgroundWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
-        javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
-        LeftPanel.setLayout(LeftPanelLayout);
-        LeftPanelLayout.setHorizontalGroup(
-            LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBackgroundWallpaper, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
-        );
-        LeftPanelLayout.setVerticalGroup(
-            LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBackgroundWallpaper)
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/body.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        LeftPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 500));
 
         RightPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -288,6 +284,7 @@ try {
     private javax.swing.JPanel RightPanel;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnSignUp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBackgroundWallpaper;
     private javax.swing.JLabel lblConfirmPassword;

@@ -1,12 +1,10 @@
 
 package simplegui; 
 
-import java.io.*;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import simplegui.CaesarCipher;
 
 public class LoginFrame extends javax.swing.JFrame {
     
@@ -205,14 +203,14 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     String username = txtManagerID.getText();
-String pass = new String(txtPassword.getPassword());
+    String pass = new String(txtPassword.getPassword());
 
-if (username.isEmpty() || pass.isEmpty()) {
+    if (username.isEmpty() || pass.isEmpty()) {
     JOptionPane.showMessageDialog(this, "Please fill all fields!");
     return;
-}
+    }
 
-try {
+    try {
     Connection conn = connectionDB.getConnection();
 
     String sql = "SELECT * FROM users WHERE username=? AND password=?";
@@ -224,7 +222,9 @@ try {
     ResultSet rs = pst.executeQuery();
 
     if (rs.next()) {
-
+        
+        int userId = rs.getInt("id");
+        
         int confirm = JOptionPane.showConfirmDialog(
                 this,
                 "Are you sure you want to login?",
@@ -234,7 +234,8 @@ try {
 
         if (confirm == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, "Login Successful!");
-            new DashboardFrame().setVisible(true);
+            
+            new DashboardFrame(userId).setVisible(true);
             this.dispose();
         }
 
@@ -244,9 +245,9 @@ try {
 
     conn.close();
 
-} catch (Exception e) {
+    } catch (Exception e) {
     JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-}
+    }
 
     }//GEN-LAST:event_btnLoginActionPerformed
 

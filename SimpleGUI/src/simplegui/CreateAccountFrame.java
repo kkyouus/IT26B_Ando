@@ -209,40 +209,47 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     String username = txtUsername.getText();
-String password = txtPassword.getText();
-String confirm = txtConfirmPassword.getText();
+    String password = txtPassword.getText();
+    String confirm = txtConfirmPassword.getText();
 
-if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
+    if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
     JOptionPane.showMessageDialog(this, "Please fill all fields");
     return;
-}
+    }
 
-if (!password.equals(confirm)) {
+    if (!password.equals(confirm)) {
     JOptionPane.showMessageDialog(this, "Passwords do not match!");
     return;
-}
+    }
 
-try {
+    try {
     Connection conn = connectionDB.getConnection();
 
     String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-    PreparedStatement pst = conn.prepareStatement(sql);
+    PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-    pst.setString(1, username);
-    pst.setString(2, CaesarCipher.encrypt(password));
+        pst.setString(1, username);
+        pst.setString(2, CaesarCipher.encrypt(password));
 
     pst.executeUpdate();
+    
+    java.sql.ResultSet rs = pst.getGeneratedKeys();
+        int userId = -1;
 
-    JOptionPane.showMessageDialog(this, "Account Created Successfully!");
+        if (rs.next()) {
+            userId = rs.getInt(1);
+        }
+
+    JOptionPane.showMessageDialog(this, "Account Created Successfully!\nUser ID: " + userId);
 
     conn.close();
 
     new LoginFrame().setVisible(true);
     this.dispose();
 
-} catch (Exception e) {
+    } catch (Exception e) {
     JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-}
+    }
     
     }//GEN-LAST:event_btnSignUpActionPerformed
 

@@ -3,7 +3,6 @@ package simplegui;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -75,6 +74,41 @@ public class DashboardFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Search error: " + e.getMessage());
         }
     }
+    
+    
+    private void sortPlayers() {
+        String selected = cmbSort.getSelectedItem().toString();
+
+        String sql = selected.equals("Sort by Name")
+                ? "SELECT * FROM players WHERE user_id = ? ORDER BY name ASC"
+                : "SELECT * FROM players WHERE user_id = ? ORDER BY age ASC";
+
+        try (Connection conn = connectionDB.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+
+            pst.setInt(1, userId);
+
+            ResultSet rs = pst.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("age"),
+                    rs.getString("position"),
+                    rs.getString("market_value"),
+                    rs.getString("best_role")
+                });
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sort error: " + e.getMessage());
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -575,36 +609,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     private void cmbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSortActionPerformed
         // TODO add your handling code here:
-        String selected = cmbSort.getSelectedItem().toString();
-
-        String sql = selected.equals("Sort by Name")
-                ? "SELECT * FROM players WHERE user_id = ? ORDER BY name ASC"
-            : "SELECT * FROM players WHERE user_id = ? ORDER BY age ASC";
-
-        try (Connection conn = connectionDB.getConnection();
-             PreparedStatement pst = conn.prepareStatement(sql)) {
-
-        pst.setInt(1, userId);
-
-        ResultSet rs = pst.executeQuery();
-
-            DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
-            model.setRowCount(0);
-
-            while (rs.next()) {
-                model.addRow(new Object[]{
-                    rs.getInt("id"),
-                    rs.getString("name"),
-                    rs.getInt("age"),
-                    rs.getString("position"),
-                    rs.getString("market_value"),
-                    rs.getString("best_role")
-                });
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Sort error: " + e.getMessage());
-        }
+        sortPlayers();
     }//GEN-LAST:event_cmbSortActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed

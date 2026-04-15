@@ -20,7 +20,7 @@ public class DashboardFrame extends javax.swing.JFrame {
     private void loadPlayers() {
         try (Connection conn = connectionDB.getConnection();
              PreparedStatement pst = conn.prepareStatement(
-                     "SELECT * FROM players WHERE user_id = ?")) {
+                     "SELECT * FROM players WHERE user_id = " + userId)) {
 
             pst.setInt(1, userId);
             ResultSet rs = pst.executeQuery();
@@ -582,8 +582,11 @@ public class DashboardFrame extends javax.swing.JFrame {
                 : "SELECT * FROM players ORDER BY age ASC";
 
         try (Connection conn = connectionDB.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+
+        pst.setInt(1, userId);
+
+        ResultSet rs = pst.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
             model.setRowCount(0);

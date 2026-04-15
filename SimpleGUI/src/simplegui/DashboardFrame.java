@@ -119,8 +119,8 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         lblFootballManagerHeader.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblFootballManagerHeader.setForeground(new java.awt.Color(255, 255, 255));
-        lblFootballManagerHeader.setText("FOOTBALL MANAGER");
-        HeaderPanel.add(lblFootballManagerHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 35, -1, -1));
+        lblFootballManagerHeader.setText("FOOTBALL MANAGER DATABASE");
+        HeaderPanel.add(lblFootballManagerHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
         btnSignOut.setBackground(new java.awt.Color(0, 153, 255));
         btnSignOut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -164,7 +164,6 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblSort.setForeground(new java.awt.Color(0, 0, 0));
         lblSort.setText("Sort:");
 
-        cmbSort.setBackground(new java.awt.Color(0, 153, 255));
         cmbSort.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbSort.setForeground(new java.awt.Color(255, 255, 255));
         cmbSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort by Name", "Sort by Age" }));

@@ -1,5 +1,0 @@
-Messi|38|Winger|5000000|Playmaker
-Modric|40|MIdfielder|4700000|Playmaker
-Neymar|34|Winger|4550000|Left Winger
-Ronaldo|41|Striker|6500000|Central Forward
-zlatan|43|Striker|3800000|Central Forward

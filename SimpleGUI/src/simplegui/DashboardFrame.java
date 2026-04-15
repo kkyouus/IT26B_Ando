@@ -20,7 +20,7 @@ public class DashboardFrame extends javax.swing.JFrame {
     private void loadPlayers() {
         try (Connection conn = connectionDB.getConnection();
              PreparedStatement pst = conn.prepareStatement(
-                     "SELECT * FROM players WHERE user_id = " + userId)) {
+                     "SELECT * FROM players WHERE user_id = ?")) {
 
             pst.setInt(1, userId);
             ResultSet rs = pst.executeQuery();
@@ -238,7 +238,7 @@ public class DashboardFrame extends javax.swing.JFrame {
             .addGroup(TablePanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(scrollPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout LeftPanelLayout = new javax.swing.GroupLayout(LeftPanel);
@@ -415,7 +415,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LeftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(RightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 1, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(FooterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -430,7 +430,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
         );
 
         pack();
@@ -578,8 +578,8 @@ public class DashboardFrame extends javax.swing.JFrame {
         String selected = cmbSort.getSelectedItem().toString();
 
         String sql = selected.equals("Sort by Name")
-                ? "SELECT * FROM players ORDER BY name ASC"
-                : "SELECT * FROM players ORDER BY age ASC";
+                ? "SELECT * FROM players WHERE user_id = ? ORDER BY name ASC"
+            : "SELECT * FROM players WHERE user_id = ? ORDER BY age ASC";
 
         try (Connection conn = connectionDB.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {

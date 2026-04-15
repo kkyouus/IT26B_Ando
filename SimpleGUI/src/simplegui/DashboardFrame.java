@@ -9,15 +9,21 @@ import javax.swing.table.DefaultTableModel;
 
 public class DashboardFrame extends javax.swing.JFrame {
     
-    public DashboardFrame() {
+    private int userId;
+    
+    public DashboardFrame(int userId) {
+        this.userId = userId;
         initComponents();
         loadPlayers();
     }
 
     private void loadPlayers() {
         try (Connection conn = connectionDB.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM players")) {
+             PreparedStatement pst = conn.prepareStatement(
+                     "SELECT * FROM players WHERE user_id = ?")) {
+
+            pst.setInt(1, userId);
+            ResultSet rs = pst.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
             model.setRowCount(0);
@@ -44,9 +50,11 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         try (Connection conn = connectionDB.getConnection();
              PreparedStatement pst = conn.prepareStatement(
-                     "SELECT * FROM players WHERE name LIKE ?")) {
+                     "SELECT * FROM players WHERE user_id = ? AND name LIKE ?")) {
 
-            pst.setString(1, "%" + keyword + "%");
+            pst.setInt(1, userId);
+            pst.setString(2, "%" + keyword + "%");
+
             ResultSet rs = pst.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) tblPlayers.getModel();
@@ -447,13 +455,14 @@ public class DashboardFrame extends javax.swing.JFrame {
 
             try (Connection conn = connectionDB.getConnection();
                  PreparedStatement pst = conn.prepareStatement(
-                         "INSERT INTO players (name, age, position, market_value, best_role) VALUES (?, ?, ?, ?, ?)")) {
+                         "INSERT INTO players (user_id, name, age, position, market_value, best_role) VALUES (?, ?, ?, ?, ?, ?)")) {
 
-                pst.setString(1, name);
-                pst.setInt(2, age);
-                pst.setString(3, position);
-                pst.setString(4, value);
-                pst.setString(5, role);
+                pst.setInt(1, userId);
+                pst.setString(2, name);
+                pst.setInt(3, age);
+                pst.setString(4, position);
+                pst.setString(5, value);
+                pst.setString(6, role);
 
                 pst.executeUpdate();
             }
@@ -509,7 +518,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
             try (Connection conn = connectionDB.getConnection();
                  PreparedStatement pst = conn.prepareStatement(
-                         "UPDATE players SET name=?, age=?, position=?, market_value=?, best_role=? WHERE id=?")) {
+                         "UPDATE players SET name=?, age=?, position=?, market_value=?, best_role=? WHERE id=? AND user_id=?")) {
 
                 pst.setString(1, name);
                 pst.setInt(2, age);
@@ -517,6 +526,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                 pst.setString(4, value);
                 pst.setString(5, role);
                 pst.setInt(6, id);
+                pst.setInt(7, userId);
 
                 pst.executeUpdate();
             }
@@ -550,9 +560,10 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         try (Connection conn = connectionDB.getConnection();
              PreparedStatement pst = conn.prepareStatement(
-                     "DELETE FROM players WHERE id=?")) {
+                     "DELETE FROM players WHERE id=? AND user_id=?")) {
 
             pst.setInt(1, id);
+            pst.setInt(2, userId);
             pst.executeUpdate();
 
             loadPlayers();
@@ -649,7 +660,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardFrame().setVisible(true);
+                new DashboardFrame(1).setVisible(true);
             }
         });
     }

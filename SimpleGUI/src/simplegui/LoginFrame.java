@@ -63,7 +63,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1.add(LeftPanel);
         LeftPanel.setBounds(0, 0, 400, 500);
 
-        RightPanel.setBackground(new java.awt.Color(255, 255, 255));
+        RightPanel.setBackground(new java.awt.Color(51, 51, 51));
         RightPanel.setMinimumSize(new java.awt.Dimension(400, 500));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo (1).png"))); // NOI18N
@@ -74,7 +74,7 @@ public class LoginFrame extends javax.swing.JFrame {
         lblLoginHeader.setText("LOGIN");
 
         lblManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblManagerID.setForeground(new java.awt.Color(0, 0, 0));
+        lblManagerID.setForeground(new java.awt.Color(255, 255, 255));
         lblManagerID.setText("Username:");
 
         txtManagerID.setBackground(new java.awt.Color(0, 153, 255));
@@ -82,14 +82,14 @@ public class LoginFrame extends javax.swing.JFrame {
         txtManagerID.setForeground(new java.awt.Color(255, 255, 255));
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPassword.setForeground(new java.awt.Color(0, 0, 0));
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password:");
 
         txtPassword.setBackground(new java.awt.Color(0, 153, 255));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
 
-        checkboxShowPassword.setForeground(new java.awt.Color(0, 0, 0));
+        checkboxShowPassword.setForeground(new java.awt.Color(255, 255, 255));
         checkboxShowPassword.setText("View Password");
         checkboxShowPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         checkboxShowPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -109,11 +109,11 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        lblIDontHaveAnAccount.setForeground(new java.awt.Color(0, 0, 0));
+        lblIDontHaveAnAccount.setForeground(new java.awt.Color(255, 255, 255));
         lblIDontHaveAnAccount.setText("I don't have an account");
 
-        btnCreateAccount.setBackground(new java.awt.Color(255, 255, 255));
-        btnCreateAccount.setForeground(new java.awt.Color(0, 153, 255));
+        btnCreateAccount.setBackground(new java.awt.Color(0, 153, 255));
+        btnCreateAccount.setForeground(new java.awt.Color(255, 255, 255));
         btnCreateAccount.setText("Create Account");
         btnCreateAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCreateAccount.addActionListener(new java.awt.event.ActionListener() {

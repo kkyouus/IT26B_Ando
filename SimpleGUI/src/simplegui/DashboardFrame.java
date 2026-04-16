@@ -182,10 +182,10 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         LeftPanel.setBackground(new java.awt.Color(0, 255, 102));
 
-        SearchPanel.setBackground(new java.awt.Color(255, 255, 255));
+        SearchPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         lblSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblSearch.setForeground(new java.awt.Color(0, 0, 0));
+        lblSearch.setForeground(new java.awt.Color(255, 255, 255));
         lblSearch.setText("Search Name:");
 
         txtSearch.setBackground(new java.awt.Color(0, 153, 255));
@@ -203,7 +203,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         });
 
         lblSort.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblSort.setForeground(new java.awt.Color(0, 0, 0));
+        lblSort.setForeground(new java.awt.Color(255, 255, 255));
         lblSort.setText("Sort:");
 
         cmbSort.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -243,7 +243,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
-        TablePanel.setBackground(new java.awt.Color(255, 255, 255));
+        TablePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         scrollPlayers.setBackground(new java.awt.Color(0, 153, 255));
         scrollPlayers.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,9 +290,9 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addComponent(TablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        RightPanel.setBackground(new java.awt.Color(255, 255, 255));
+        RightPanel.setBackground(new java.awt.Color(51, 51, 51));
 
-        ImagePanel.setBackground(new java.awt.Color(255, 255, 255));
+        ImagePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         lblPictureFootballField.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/formation (1).png"))); // NOI18N
         lblPictureFootballField.setText("jLabel2");

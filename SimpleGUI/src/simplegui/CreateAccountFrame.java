@@ -58,7 +58,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         LeftPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 500));
 
-        RightPanel.setBackground(new java.awt.Color(255, 255, 255));
+        RightPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo (1).png"))); // NOI18N
         lblLogo.setText("jLabel3");
@@ -68,7 +68,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         lblSignUpHeader.setText("SIGN UP");
 
         lblUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblUsername.setForeground(new java.awt.Color(0, 0, 0));
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Username:");
 
         txtUsername.setBackground(new java.awt.Color(0, 153, 255));
@@ -76,7 +76,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         txtUsername.setForeground(new java.awt.Color(255, 255, 255));
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPassword.setForeground(new java.awt.Color(0, 0, 0));
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password:");
 
         txtPassword.setBackground(new java.awt.Color(0, 153, 255));
@@ -84,7 +84,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
 
         lblConfirmPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblConfirmPassword.setForeground(new java.awt.Color(0, 0, 0));
+        lblConfirmPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblConfirmPassword.setText("Confirm Password:");
 
         txtConfirmPassword.setBackground(new java.awt.Color(0, 153, 255));
@@ -102,11 +102,11 @@ public class CreateAccountFrame extends javax.swing.JFrame {
             }
         });
 
-        lblIHaveAnAccount.setForeground(new java.awt.Color(0, 0, 0));
+        lblIHaveAnAccount.setForeground(new java.awt.Color(255, 255, 255));
         lblIHaveAnAccount.setText("I have an account");
 
-        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
-        btnLogin.setForeground(new java.awt.Color(0, 153, 255));
+        btnLogin.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {

@@ -1,5 +1,4 @@
-
-package simplegui; 
+package simplegui;
 
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -7,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class LoginFrame extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form LoginFrame
      */
@@ -201,69 +200,69 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        
-    String username = txtManagerID.getText();
-    String pass = new String(txtPassword.getPassword());
 
-    if (username.isEmpty() || pass.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Please fill all fields!");
-    return;
-    }
+        String username = txtManagerID.getText();
+        String pass = new String(txtPassword.getPassword());
 
-    try {
-    Connection conn = connectionDB.getConnection();
-
-    String sql = "SELECT * FROM users WHERE username=? AND password=?";
-    PreparedStatement pst = conn.prepareStatement(sql);
-
-    pst.setString(1, username);
-    pst.setString(2, CaesarCipher.encrypt(pass));
-
-    ResultSet rs = pst.executeQuery();
-
-    if (rs.next()) {
-        
-        int userId = rs.getInt("id");
-        
-        int confirm = JOptionPane.showConfirmDialog(
-                this,
-                "Are you sure you want to login?",
-                "Confirm Login",
-                JOptionPane.YES_NO_OPTION
-        );
-
-        if (confirm == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(this, "Login Successful!");
-            
-            new DashboardFrame(userId).setVisible(true);
-            this.dispose();
+        if (username.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all fields!");
+            return;
         }
 
-    } else {
-        JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
-    }
+        try {
+            Connection conn = connectionDB.getConnection();
 
-    conn.close();
+            String sql = "SELECT * FROM users WHERE username=? AND password=?";
+            PreparedStatement pst = conn.prepareStatement(sql);
 
-    } catch (Exception e) {
-    JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
+            pst.setString(1, username);
+            pst.setString(2, CaesarCipher.encrypt(pass));
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                int userId = rs.getInt("id");
+
+                int confirm = JOptionPane.showConfirmDialog(
+                        this,
+                        "Are you sure you want to login?",
+                        "Confirm Login",
+                        JOptionPane.YES_NO_OPTION
+                );
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(this, "Login Successful!");
+
+                    new DashboardFrame(userId).setVisible(true);
+                    this.dispose();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
+            }
+
+            conn.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void checkboxShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowPasswordActionPerformed
         // TODO add your handling code here:
         if (checkboxShowPassword.isSelected()) {
-        txtPassword.setEchoChar((char) 0);
-    } else {
-        txtPassword.setEchoChar('*');
-    }
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            txtPassword.setEchoChar('*');
+        }
     }//GEN-LAST:event_checkboxShowPasswordActionPerformed
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
         // TODO add your handling code here:
         new CreateAccountFrame().setVisible(true);
-    this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     /**
@@ -292,9 +291,7 @@ public class LoginFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

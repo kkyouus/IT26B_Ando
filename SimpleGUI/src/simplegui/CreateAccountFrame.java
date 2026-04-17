@@ -1,4 +1,3 @@
-
 package simplegui;
 
 import java.sql.Connection;
@@ -208,56 +207,56 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
 
-    String username = txtUsername.getText();
-    String password = txtPassword.getText();
-    String confirm = txtConfirmPassword.getText();
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        String confirm = txtConfirmPassword.getText();
 
-    if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Please fill all fields");
-    return;
-    }
-
-    if (!password.equals(confirm)) {
-    JOptionPane.showMessageDialog(this, "Passwords do not match!");
-    return;
-    }
-
-    try {
-    Connection conn = connectionDB.getConnection();
-
-    String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-    PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-
-        pst.setString(1, username);
-        pst.setString(2, CaesarCipher.encrypt(password));
-
-    pst.executeUpdate();
-    
-    java.sql.ResultSet rs = pst.getGeneratedKeys();
-        int userId = -1;
-
-        if (rs.next()) {
-            userId = rs.getInt(1);
+        if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all fields");
+            return;
         }
 
-    JOptionPane.showMessageDialog(this, "Account Created Successfully!\nUser ID: " + userId);
+        if (!password.equals(confirm)) {
+            JOptionPane.showMessageDialog(this, "Passwords do not match!");
+            return;
+        }
 
-    conn.close();
+        try {
+            Connection conn = connectionDB.getConnection();
 
-    new LoginFrame().setVisible(true);
-    this.dispose();
+            String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-    } catch (Exception e) {
-    JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
-    
+            pst.setString(1, username);
+            pst.setString(2, CaesarCipher.encrypt(password));
+
+            pst.executeUpdate();
+
+            java.sql.ResultSet rs = pst.getGeneratedKeys();
+            int userId = -1;
+
+            if (rs.next()) {
+                userId = rs.getInt(1);
+            }
+
+            JOptionPane.showMessageDialog(this, "Account Created Successfully!\nUser ID: " + userId);
+
+            conn.close();
+
+            new LoginFrame().setVisible(true);
+            this.dispose();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:       
-    new LoginFrame().setVisible(true);
-    this.dispose();
-             
+        new LoginFrame().setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

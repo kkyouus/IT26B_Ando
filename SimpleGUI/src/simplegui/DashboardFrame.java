@@ -7,9 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class DashboardFrame extends javax.swing.JFrame {
-    
+
     private int userId;
-    
+
     public DashboardFrame(int userId) {
         this.userId = userId;
         initComponents();
@@ -17,9 +17,8 @@ public class DashboardFrame extends javax.swing.JFrame {
     }
 
     private void loadPlayers() {
-        try (Connection conn = connectionDB.getConnection();
-             PreparedStatement pst = conn.prepareStatement(
-                     "SELECT * FROM players WHERE user_id = ?")) {
+        try (Connection conn = connectionDB.getConnection(); PreparedStatement pst = conn.prepareStatement(
+                "SELECT * FROM players WHERE user_id = ?")) {
 
             pst.setInt(1, userId);
             ResultSet rs = pst.executeQuery();
@@ -43,13 +42,11 @@ public class DashboardFrame extends javax.swing.JFrame {
         }
     }
 
-    
     private void searchPlayer() {
         String keyword = txtSearch.getText();
 
-        try (Connection conn = connectionDB.getConnection();
-             PreparedStatement pst = conn.prepareStatement(
-                     "SELECT * FROM players WHERE user_id = ? AND name LIKE ?")) {
+        try (Connection conn = connectionDB.getConnection(); PreparedStatement pst = conn.prepareStatement(
+                "SELECT * FROM players WHERE user_id = ? AND name LIKE ?")) {
 
             pst.setInt(1, userId);
             pst.setString(2, "%" + keyword + "%");
@@ -74,8 +71,7 @@ public class DashboardFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Search error: " + e.getMessage());
         }
     }
-    
-    
+
     private void sortPlayers() {
         String selected = cmbSort.getSelectedItem().toString();
 
@@ -83,8 +79,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                 ? "SELECT * FROM players WHERE user_id = ? ORDER BY name ASC"
                 : "SELECT * FROM players WHERE user_id = ? ORDER BY age ASC";
 
-        try (Connection conn = connectionDB.getConnection();
-             PreparedStatement pst = conn.prepareStatement(sql)) {
+        try (Connection conn = connectionDB.getConnection(); PreparedStatement pst = conn.prepareStatement(sql)) {
 
             pst.setInt(1, userId);
 
@@ -108,7 +103,6 @@ public class DashboardFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Sort error: " + e.getMessage());
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -487,9 +481,8 @@ public class DashboardFrame extends javax.swing.JFrame {
         try {
             int age = Integer.parseInt(ageStr);
 
-            try (Connection conn = connectionDB.getConnection();
-                 PreparedStatement pst = conn.prepareStatement(
-                         "INSERT INTO players (user_id, name, age, position, market_value, best_role) VALUES (?, ?, ?, ?, ?, ?)")) {
+            try (Connection conn = connectionDB.getConnection(); PreparedStatement pst = conn.prepareStatement(
+                    "INSERT INTO players (user_id, name, age, position, market_value, best_role) VALUES (?, ?, ?, ?, ?, ?)")) {
 
                 pst.setInt(1, userId);
                 pst.setString(2, name);
@@ -519,13 +512,13 @@ public class DashboardFrame extends javax.swing.JFrame {
             return;
         }
 
-        String info =
-                "ID: " + tblPlayers.getValueAt(row, 0) +
-                "\nName: " + tblPlayers.getValueAt(row, 1) +
-                "\nAge: " + tblPlayers.getValueAt(row, 2) +
-                "\nPosition: " + tblPlayers.getValueAt(row, 3) +
-                "\nMarket Value: " + tblPlayers.getValueAt(row, 4) +
-                "\nBest Role: " + tblPlayers.getValueAt(row, 5);
+        String info
+                = "ID: " + tblPlayers.getValueAt(row, 0)
+                + "\nName: " + tblPlayers.getValueAt(row, 1)
+                + "\nAge: " + tblPlayers.getValueAt(row, 2)
+                + "\nPosition: " + tblPlayers.getValueAt(row, 3)
+                + "\nMarket Value: " + tblPlayers.getValueAt(row, 4)
+                + "\nBest Role: " + tblPlayers.getValueAt(row, 5);
 
         JOptionPane.showMessageDialog(this, info);
     }//GEN-LAST:event_btnReadActionPerformed
@@ -550,9 +543,8 @@ public class DashboardFrame extends javax.swing.JFrame {
         try {
             int age = Integer.parseInt(ageStr);
 
-            try (Connection conn = connectionDB.getConnection();
-                 PreparedStatement pst = conn.prepareStatement(
-                         "UPDATE players SET name=?, age=?, position=?, market_value=?, best_role=? WHERE id=? AND user_id=?")) {
+            try (Connection conn = connectionDB.getConnection(); PreparedStatement pst = conn.prepareStatement(
+                    "UPDATE players SET name=?, age=?, position=?, market_value=?, best_role=? WHERE id=? AND user_id=?")) {
 
                 pst.setString(1, name);
                 pst.setInt(2, age);
@@ -590,11 +582,12 @@ public class DashboardFrame extends javax.swing.JFrame {
                 "Confirm",
                 JOptionPane.YES_NO_OPTION);
 
-        if (confirm != JOptionPane.YES_OPTION) return;
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
 
-        try (Connection conn = connectionDB.getConnection();
-             PreparedStatement pst = conn.prepareStatement(
-                     "DELETE FROM players WHERE id=? AND user_id=?")) {
+        try (Connection conn = connectionDB.getConnection(); PreparedStatement pst = conn.prepareStatement(
+                "DELETE FROM players WHERE id=? AND user_id=?")) {
 
             pst.setInt(1, id);
             pst.setInt(2, userId);
@@ -638,7 +631,6 @@ public class DashboardFrame extends javax.swing.JFrame {
         searchPlayer();
     }//GEN-LAST:event_txtSearchKeyReleased
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CRUDPanel;

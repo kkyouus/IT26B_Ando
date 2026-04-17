@@ -43,7 +43,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         }
     }
 
-    // ===================== SEARCH =====================
+    
     private void searchPlayer() {
         String keyword = txtSearch.getText();
 

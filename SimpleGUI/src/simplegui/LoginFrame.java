@@ -62,32 +62,33 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1.add(LeftPanel);
         LeftPanel.setBounds(0, 0, 400, 500);
 
-        RightPanel.setBackground(new java.awt.Color(51, 51, 51));
+        RightPanel.setBackground(new java.awt.Color(0, 153, 255));
         RightPanel.setMinimumSize(new java.awt.Dimension(400, 500));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo (1).png"))); // NOI18N
         lblLogo.setText("jLabel4");
 
         lblLoginHeader.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        lblLoginHeader.setForeground(new java.awt.Color(0, 153, 255));
+        lblLoginHeader.setForeground(new java.awt.Color(255, 255, 255));
         lblLoginHeader.setText("LOGIN");
 
-        lblManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblManagerID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblManagerID.setForeground(new java.awt.Color(255, 255, 255));
         lblManagerID.setText("Username:");
 
-        txtManagerID.setBackground(new java.awt.Color(0, 153, 255));
+        txtManagerID.setBackground(new java.awt.Color(255, 255, 255));
         txtManagerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtManagerID.setForeground(new java.awt.Color(255, 255, 255));
+        txtManagerID.setForeground(new java.awt.Color(0, 0, 0));
 
-        lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password:");
 
-        txtPassword.setBackground(new java.awt.Color(0, 153, 255));
+        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
 
+        checkboxShowPassword.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         checkboxShowPassword.setForeground(new java.awt.Color(255, 255, 255));
         checkboxShowPassword.setText("View Password");
         checkboxShowPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -97,9 +98,9 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setForeground(new java.awt.Color(0, 153, 255));
         btnLogin.setText("LOGIN");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -111,8 +112,8 @@ public class LoginFrame extends javax.swing.JFrame {
         lblIDontHaveAnAccount.setForeground(new java.awt.Color(255, 255, 255));
         lblIDontHaveAnAccount.setText("I don't have an account");
 
-        btnCreateAccount.setBackground(new java.awt.Color(0, 153, 255));
-        btnCreateAccount.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreateAccount.setBackground(new java.awt.Color(255, 255, 255));
+        btnCreateAccount.setForeground(new java.awt.Color(0, 153, 255));
         btnCreateAccount.setText("Create Account");
         btnCreateAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCreateAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +131,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addGroup(RightPanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(lblIDontHaveAnAccount)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreateAccount))
                     .addGroup(RightPanelLayout.createSequentialGroup()
                         .addGap(38, 38, 38)

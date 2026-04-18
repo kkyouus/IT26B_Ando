@@ -116,6 +116,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         HeaderPanel = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         lblFootballManagerHeader = new javax.swing.JLabel();
         btnSignOut = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -153,10 +154,29 @@ public class DashboardFrame extends javax.swing.JFrame {
         lblLogo.setText("jLabel3");
         HeaderPanel.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, 105, -1));
 
-        lblFootballManagerHeader.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
+
+        lblFootballManagerHeader.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         lblFootballManagerHeader.setForeground(new java.awt.Color(255, 255, 255));
-        lblFootballManagerHeader.setText("FOOTBALL MANAGER DATABASE");
-        HeaderPanel.add(lblFootballManagerHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+        lblFootballManagerHeader.setText(" FOOTBALL MANAGER ™ ");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFootballManagerHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lblFootballManagerHeader)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        HeaderPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 430, 50));
 
         btnSignOut.setBackground(new java.awt.Color(0, 153, 255));
         btnSignOut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -650,6 +670,7 @@ public class DashboardFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblFootballManagerHeader;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblManage;

@@ -139,6 +139,10 @@ public class DashboardFrame extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         FooterPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -437,6 +441,18 @@ public class DashboardFrame extends javax.swing.JFrame {
         FooterPanel.setPreferredSize(new java.awt.Dimension(1000, 110));
         FooterPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/1fb1.png"))); // NOI18N
+        FooterPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fotmob1.png"))); // NOI18N
+        FooterPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/3652.png"))); // NOI18N
+        FooterPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pl1.png"))); // NOI18N
+        FooterPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, -1));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/footer (1).jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         FooterPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 110));
@@ -669,6 +685,10 @@ public class DashboardFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbSort;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblFootballManagerHeader;

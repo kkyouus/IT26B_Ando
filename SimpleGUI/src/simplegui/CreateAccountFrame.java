@@ -227,7 +227,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
             PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             pst.setString(1, username);
-            pst.setString(2, CaesarCipher.encrypt(password));
+            pst.setString(2, password);
 
             pst.executeUpdate();
 

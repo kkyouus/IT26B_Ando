@@ -218,7 +218,7 @@ public class LoginFrame extends javax.swing.JFrame {
             PreparedStatement pst = conn.prepareStatement(sql);
 
             pst.setString(1, username);
-            pst.setString(2, CaesarCipher.encrypt(pass));
+            pst.setString(2, pass);
 
             ResultSet rs = pst.executeQuery();
 

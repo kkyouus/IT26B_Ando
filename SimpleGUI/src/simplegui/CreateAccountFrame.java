@@ -3,7 +3,6 @@ package simplegui;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
-import simplegui.CaesarCipher;
 
 public class CreateAccountFrame extends javax.swing.JFrame {
 
@@ -72,7 +71,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
         txtUsername.setBackground(new java.awt.Color(255, 255, 255));
         txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtUsername.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsername.setForeground(new java.awt.Color(0, 0, 0));
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,7 +79,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
         txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
 
         lblConfirmPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblConfirmPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,7 +87,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
         txtConfirmPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtConfirmPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtConfirmPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtConfirmPassword.setForeground(new java.awt.Color(0, 0, 0));
 
         btnSignUp.setBackground(new java.awt.Color(255, 255, 255));
         btnSignUp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
